@@ -3,9 +3,14 @@ const cards = document.querySelectorAll('.card');
 let flipped = false;
 let firstCard;
 let secondCard;
+let twoFlipped = false;
 
-//Flip cards 
 function flipCard(){
+    //If two cards are already flipped, stop
+    if(twoFlipped){
+        return
+    }
+
     //Add the class flip to *this* (the object that called the function)
     this.classList.add('flip');
 
@@ -21,6 +26,7 @@ function flipCard(){
     
     //If the first and second card aren't the same, find if they're duplicates
     if(secondCard != firstCard){
+        twoFlipped = true;
         flipped = false;
         findDuplicate();
     }
@@ -41,12 +47,15 @@ hideCard = () => {
     //Make the cards disappear
     firstCard.style.visibility = "hidden";
     secondCard.style.visibility = "hidden";
+    twoFlipped = false;
 }
  
 disableCard = () => {
     //Remove flip class (unflip cards)
     firstCard.classList.remove('flip');
     secondCard.classList.remove('flip');
+    twoFlipped = false;
 }
 
+//For each card, add on click event
 cards.forEach(card => card.addEventListener('click', flipCard));

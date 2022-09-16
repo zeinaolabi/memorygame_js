@@ -27,16 +27,26 @@ function flipCard(){
 }
 
 findDuplicate = () => {
-    //Check the id of the first and second card
+    /*If the cards have the same ids, hide them
+      if they dont, unflip them*/    
     if(firstCard.id != secondCard.id) {
         //Set a timer to 500ms before running the function
         setTimeout(disableCard, 500);
         return;
     }
+    setTimeout(hideCard, 500);
 }
 
 hideCard = () => {
+    //Make the cards disappear
+    firstCard.style.visibility = "hidden";
+    secondCard.style.visibility = "hidden";
 }
  
+disableCard = () => {
+    //Remove flip class (unflip cards)
+    firstCard.classList.remove('flip');
+    secondCard.classList.remove('flip');
+}
 
 cards.forEach(card => card.addEventListener('click', flipCard));

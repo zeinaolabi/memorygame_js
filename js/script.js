@@ -1,9 +1,11 @@
 //Initailized variables
-const cards = document.querySelectorAll('.card');
+const cards = document.querySelectorAll(".card");
+const score = document.getElementById("score");
 let flipped = false;
+let twoFlipped = false;
 let firstCard;
 let secondCard;
-let twoFlipped = false;
+let currentScore = 0;
 
 function flipCard(){
     //If two cards are already flipped, stop
@@ -38,9 +40,13 @@ findDuplicate = () => {
     if(firstCard.id != secondCard.id) {
         //Set a timer to 500ms before running the function
         setTimeout(disableCard, 500);
+        currentScore -= 5;
+        score.textContent = currentScore;
         return;
     }
     setTimeout(hideCard, 500);
+    currentScore +=10;
+    score.textContent = currentScore;
 }
 
 hideCard = () => {

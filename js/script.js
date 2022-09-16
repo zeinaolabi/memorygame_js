@@ -1,6 +1,7 @@
 //Initailized variables
 const cards = document.querySelectorAll(".card");
 const score = document.getElementById("score");
+const rows = document.querySelectorAll(".row");
 let flipped = false;
 let twoFlipped = false;
 let firstCard;
@@ -64,6 +65,23 @@ disableCard = () => {
     secondCard.classList.remove('flip');
     twoFlipped = false;
 }
+
+shuffle = () => {
+    //For each row, change the order
+    rows.forEach(row => {
+        let ramdomPos = Math.floor(Math.random() * 2);
+        row.style.order = ramdomPos;
+      });
+
+    //For each card, change the order
+    cards.forEach(card => {
+      let ramdomPos = Math.floor(Math.random() * 3);
+      card.style.order = ramdomPos;
+    });
+};
+
+//Shuffle cards
+shuffle();
 
 //For each card, add on click event
 cards.forEach(card => card.addEventListener('click', flipCard));

@@ -13,9 +13,14 @@
 }
 
 .cards_container{
-    width: 35vw;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    width: 30vw;
 }
 
 .card{

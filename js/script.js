@@ -40,7 +40,9 @@ findDuplicate = () => {
     if(firstCard.id != secondCard.id) {
         //Set a timer to 500ms before running the function
         setTimeout(disableCard, 500);
-        currentScore -= 5;
+        if(currentScore != 0){
+            currentScore -= 5;
+        }
         score.textContent = currentScore;
         return;
     }
